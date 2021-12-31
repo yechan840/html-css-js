@@ -1,0 +1,69 @@
+<h1>내 정보 관리</h1>
+<div class="div-32"></div>
+<p class="description yellow">
+	별표(*)는 필수항목 입니다.
+</p>
+<div class="div-16"></div>
+<form id="memberFrm" onsubmit="return false;">
+	<table class="label">
+		<tr>
+			<td class="key require">
+				관리자아이디 *
+			</td>
+			<td class="value">
+				<span v-cloak>{{member.memberId}}</span>
+			</td>
+		</tr>
+		<tr>
+			<td class="key require">
+				비밀번호 *
+			</td>
+			<td class="value" >
+				<input type="password" placeholder="영문+숫자 조합 최소 8자 최대 15자" id="memberPasswd" name="memberPasswd" v-model="member.memberPasswd" v-alphabet-numeric-special maxlength="20">
+			</td>
+		</tr>
+		<tr>
+			<td class="key require">
+				비밀번호확인 *
+			</td>
+			<td class="value">
+				<input type="password" placeholder="비밀번호를 한번 더 입력해주세요" id="memberPasswdConfirm" name="memberPasswdConfirm"  v-model="member.memberPasswdConfirm" alphabet-numeric-special maxlength="20">
+			</td>
+		</tr>
+		<tr>
+			<td class="key">
+				이메일 *
+			</td>
+			<td class="value">
+				<input type="email" name="email" id="email" class="large" placeholder="example@domain.co.kr" v-model="member.email" minlength="5" maxlength="50">
+			</td>
+		</tr>
+		<tr>
+			<td class="key">
+				이름 *
+			</td>
+			<td class="value">
+				<input type="text" id="memberName" name="memberName" class="small" v-model="member.memberName" minlength="2" maxlength="10">
+			</td>
+		</tr>
+		<tr>
+			<td class="key">
+				연락처 *
+			</td>
+			<td class="value">
+				<input type="tel" class="small" placeholder="'-' 없이 숫자만 입력" id="cellphone" name="cellphone" v-numeric  v-model="member.cellphone" minlength="10" maxlength="12">
+			</td>
+		</tr>
+		<tr>
+			<td class="key">
+				등록일
+			</td>
+			<td class="value">
+				<span v-cloak>{{member.createdAt | formatDateTime}}</span>
+			</td>
+		</tr>
+	</table>
+</form>
+<div class="action-box" v-cloak>
+	<button class="wide positive large" @click="btnSave">수정완료</button>
+</div>
